@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  	<title>表单</title>
-      <meta charset="UTF-8">
-      <style type="text/css">
-          span{
-              color:red;
-          }
-          legend{
-              color:red;
-          }
-      </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务1-表单</title>
+    <style>
+        span{
+            color:red;
+        }
+        legend{
+            color:red;
+        }
+    </style>
 </head>
 <body>
-	<form id="testform" method="get" action="">
+    <form id="testform" method="get" action="">
         <h1>毕业生信息</h1>
-		<fieldset>
-			<legend>
-				学生信息
-			</legend>
-			姓&nbsp;&nbsp;名：<input type="text" name="name" autofocus="autofocus" required placeholder="请输入姓名"/><span>*</span>
-            <br/>
+        <fieldset>
+            <legend>
+                学生信息
+            </legend>
+            姓&nbsp;&nbsp;名：<input type="text" name="name" autofocus="autofocus" required placeholder="请输入姓名"/><span>*</span>
+            <br/> 
             学&nbsp;&nbsp;号：<input type="number" name="id" autofocus="autofocus" required placeholder="请输入学号"/><span>*</span>
-            <br/>
-            手&nbsp;&nbsp;机：<input type="tel" name="phone" autofocus="autofocus" required placeholder="请输入手机号"/><span>*</span>
-            <br/>
+            <br/> 
+            手&nbsp;&nbsp;机：<input type="tel" name="tel" autofocus="autofocus" required placeholder="请输入手机号"/><span>*</span>
+            <br/> 
             邮&nbsp;&nbsp;箱：<input type="email" name="email" autofocus="autofocus" required placeholder="请输入邮箱地址"/><span>*</span>
-			<br/>
+            <br/> 
         </fieldset>
         <br/>
         <fieldset>
-			<legend>
-				录取情况
-			</legend>
-			录取学校：<input type="search" name="school" autofocus="autofocus"/>
-			<br/>
-			入学成绩：<input type="number" name="score" autofocus="autofocus"/>
-            <br/>
-            入学时间：<input type="date" name="time" autofocus="autofocus"/>
-			<br/>
+            <legend>
+                录取情况
+            </legend>
+            录取学校：<input type="search" name="school" autofocus="autofocus"/>
+            <br/> 
+            录取成绩：<input type="number" name="score" autofocus="autofocus"/>
+            <br/> 
+            入学时间：<input type="date" name="date" autofocus="autofocus"/>
+            <br/> 
         </fieldset>
         <br/>
         <input type="submit" value="提交"/>
-	</form>
+    </form>
 </body>
 </html>
-
-
