@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务2-web存储</title>
+    <style>
+        #search{
+            width: 200px;
+            height: 40px;
+        }
+        #search:focus{
+            border-style:solid;  
+            border-color: #e9b76e;
+            outline:none;
+        }
+
+        #button{
+            width: 150px;
+            height: 35px;
+            color:dimgrey;
+        }
+        #box{
+            display: none;
+        }
+        #box{
+            width: 360px;
+        }
+        #msg{
+            width: 350px;
+        }
+        li{
+            list-style: none;
+            background-color: #ccc;
+            float: left;
+            margin:5px 5px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <input id="search" type="search" name="search" placeholder="请输入想查找的商品" onclick="over()"/>
+    <input id="button" type="button" value="搜索" name="button" onblur="add('box')"/>
+    <div id="box">
+        最近搜索
+        <button style="float: right;margin-top: 50px;" onclick="remove()">x</button>
+        <div id="msg"></div>
+    </div>
+</body>
+<script>
+    var search = document.getElementById('search');
+    var button = document.getElementById('button');
+    var box = document.getElementById('box');
+    var target = document.getElementById('msg');
+    function over(){
+        box.style.display = 'block';
+        var result=' ';
+        for(var i=0; i<localStorage.length; i++){
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            result += '<li>'+ value+'</li>';
+        }  
+        target.innerHTML = result;
+    }
+    function add(id){
+        box.style.display = 'none';
+        var data = document.getElementById('search').value;
+        var time = new Date().getTime();
+        localStorage.setItem(time,data);
+        for(var j=0;j<localStorage.length-1;j++){
+                if(localStorage.getItem(localStorage.key(j))==localStorage.getItem(localStorage.key(localStorage.length-1))){
+                    localStorage.removeItem(localStorage.key(localStorage.length-1));
+                }
+            }
+        var result=' ';
+        for(var i=0; i<localStorage.length; i++){
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            result +='<li>'+ value+'</li>';
+        }
+        target.innerHTML = result;
+    }
+    function out(id){
+        target.innerHTML = ' ';
+
+    }
+    function remove(){
+        if(confirm("确定要清除所有的历史记录吗？")){
+            localStorage.clear();
+            out('msg');
+            box.style.display = 'none';
+        }
+    }
+</script>
+</html>
