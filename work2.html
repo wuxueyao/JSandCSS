@@ -26,6 +26,8 @@
         }
         #box{
             width: 360px;
+            border:solid #ccc 1px;
+            padding-bottom: 10px;
         }
         #msg{
             width: 350px;
@@ -33,8 +35,8 @@
         li{
             list-style: none;
             background-color: #ccc;
-            float: left;
-            margin:5px 5px 0 0;
+            display: inline-block;
+            margin:5px 5px 0 5px;
         }
     </style>
 </head>
@@ -43,13 +45,12 @@
     <input id="button" type="button" value="搜索" name="button" onblur="add('box')"/>
     <div id="box">
         最近搜索
-        <button style="float: right;margin-top: 50px;" onclick="remove()">x</button>
+        <button style="margin-top:2px;margin-left:335px" onclick="remove()">x</button>
         <div id="msg"></div>
     </div>
 </body>
 <script>
     var search = document.getElementById('search');
-    var button = document.getElementById('button');
     var box = document.getElementById('box');
     var target = document.getElementById('msg');
     function over(){
@@ -81,14 +82,10 @@
         target.innerHTML = result;
         search.value='';
     }
-    function out(id){
-        target.innerHTML = ' ';
-
-    }
     function remove(){
         if(confirm("确定要清除所有的历史记录吗？")){
             localStorage.clear();
-            out('msg');
+            target.innerHTML = ' ';
             box.style.display = 'none';
         }
     }
