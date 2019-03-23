@@ -15,7 +15,6 @@
             border-color: #e9b76e;
             outline:none;
         }
-
         #button{
             width: 150px;
             height: 35px;
@@ -23,8 +22,6 @@
         }
         #box{
             display: none;
-        }
-        #box{
             width: 360px;
             border:solid #ccc 1px;
             padding-bottom: 10px;
@@ -69,10 +66,10 @@
         var time = new Date().getTime();
         localStorage.setItem(time,data);
         for(var j=0;j<localStorage.length-1;j++){
-                if(localStorage.getItem(localStorage.key(j))==localStorage.getItem(localStorage.key(localStorage.length-1))){
-                    localStorage.removeItem(localStorage.key(localStorage.length-1));
-                }
+            if(localStorage.getItem(localStorage.key[j])==localStorage.getItem(localStorage.key[localStorage.length-1])){
+                localStorage.removeItem(localStorage.key(localStorage.length-1));
             }
+        }
         var result=' ';
         for(var i=0; i<localStorage.length; i++){
             var key = localStorage.key(i);
@@ -83,11 +80,18 @@
         search.value='';
     }
     function remove(){
-        if(confirm("确定要清除所有的历史记录吗？")){
-            localStorage.clear();
+        if(localStorage.length==0){
+            alert("当前搜索记录为空，没有要删除的搜索记录！");
             target.innerHTML = ' ';
             box.style.display = 'none';
+        }else{
+            if(confirm("确定要清除所有的历史记录吗？")){
+                localStorage.clear();
+                target.innerHTML = ' ';
+                box.style.display = 'none';
+            }
         }
+        
     }
 </script>
 </html>
