@@ -66,7 +66,7 @@
         var time = new Date().getTime();
         localStorage.setItem(time,data);
         for(var j=0;j<localStorage.length-1;j++){
-            if(localStorage.getItem(localStorage.key(j)==localStorage.getItem(localStorage.key(localStorage.length-1)))){
+            if(localStorage.getItem(localStorage.key(j))==localStorage.getItem(localStorage.key(localStorage.length-1))){
                 localStorage.removeItem(localStorage.key(localStorage.length-1));
             }
         }
