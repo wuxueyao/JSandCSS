@@ -71,7 +71,7 @@
 
     //鼠标按下并移动，划开遮罩层
     cover.onmousedown = function(){
-        if(area()<=cover.width*cover.height*0.2){//剩余面积小于20%，清楚所有遮罩层
+        if(area()<=cover.width*cover.height*0.15){//当用户涂抹了85%，也就是图层剩余面积小于15%，清除所有遮罩层
                 ctx.clearRect(0,0,cover.width,cover.height);
         }else{
             cover.onmousemove = function(e){
