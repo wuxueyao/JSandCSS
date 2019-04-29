@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            border:none;
+        }
+        #ward{
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 100px;
+            color:red;
+            font-weight: bolder;
+            text-align: center;
+            position: absolute;
+            
+        }
+        #cover{
+            border:1px solid #ccc;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="ward">一等奖</div>
+    <canvas id="cover"></canvas>
+</body>
+<script>
+
+    var cover = document.getElementById('cover');
+    var ward = document.getElementById('ward');
+
+    //随机获取刮奖内容
+    var wards=["一等奖","二等奖","三等奖","谢谢参与"];
+    var num = Math.floor(Math.random()*3.9);
+    ward.innerHTML=wards[num];
+
+    //画布的第一层，灰色遮罩
+    var ctx = cover.getContext('2d');
+    cover.width=400;
+    cover.height=200;
+    ctx.beginPath();
+    ctx.fillStyle = "#ccc";
+    ctx.fillRect(0,0,400,200);
+    ctx.closePath();
+    //画布的第二层，白色“刮一刮”
+    ctx.font="bold 100px Microsoft Yahei";
+  	ctx.textAlign="left";
+  	ctx.fillStyle="#fff";
+  	ctx.fillText("刮一刮",50,130);
+ 
+    ctx.globalCompositeOperation="destination-out"; 
+
+    //计算遮罩层剩下的像素面积
+    function area(){
+        var data=ctx.getImageData(0,0,cover.width,cover.height).data;
+            for(var i=0,j=0;i<data.length;i+=4){
+                if(data[i]&&data[i+1]&&data[i+2]&&data[i+3]){
+                    j++;
+                }
+            }
+            return j;
+    }
+
+    //鼠标按下并移动，划开遮罩层
+    cover.onmousedown = function(){
+        if(area()<=cover.width*cover.height*0.2){//剩余面积小于20%，清楚所有遮罩层
+                ctx.clearRect(0,0,cover.width,cover.height);
+        }else{
+            cover.onmousemove = function(e){
+                var x=e.clientX-cover.offsetLeft;
+                var y=e.clientY-cover.offsetTop;
+                ctx.beginPath();
+                ctx.arc(x,y,20,0,2*Math.PI);
+                ctx.fillStyle="#ccc";
+                ctx.closePath();
+                ctx.fill();
+            }
+        }   
+    }
+
+    //鼠标松开没有操作，防止鼠标按下后不用点击只滑动也会有刮奖操作
+    cover.onmouseup = function(){
+        cover.onmousemove = function(){
+
+        }
+    }
+</script>
+</html>
