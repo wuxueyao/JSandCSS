@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>任务4-盒子移动</title>
+    <title>任务4-CSS3变形与动画</title>
     <style>
         #big{
             border-width: 2px 4px 4px 2px;
             border-color: #ccc;
             border-style: solid;
-            width: 500px;
-            
+            width: 450px;
+            height: 500px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -19,7 +19,7 @@
         }
         #cover{
             position: absolute; 
-            width:500px;
+            width:450px;
             height: 279px;
             background:rgba(148, 137, 137, 0.5);
             transform: scale(0,0);
@@ -35,7 +35,7 @@
             text-align: center;
             float: left;
             position: absolute;   
-            left: 440px;
+            left: 390px;
             top: 30px;
             z-index: 100;
         }
@@ -52,19 +52,29 @@
         }
         /* 下边文字部分 */
         #letters{
-            height: 200px;
             padding: 0 20px 0 20px;
             background: #fff;
+            top: 279px;
         }
         #inner{
-           transform: scale(0,0);
+            color: #777;
+            text-align:justify;
+            text-justify:inter-ideograph;
+            transform: scale(0,0);
         }
         span{
             color:rgb(190, 182, 182);
             background: white;
-            height: 30px;
-            line-height: 30px;
             margin-left: 20px;
+        }
+        #p{
+            width: 450px;
+            height: 32px;
+            line-height: 32px;
+            position: absolute;
+            top: 462px;
+            background: #fff;
+            z-index: 100;
         }
         /*鼠标滑上效果*/
         #big:hover #inner{
@@ -72,7 +82,7 @@
         }
         #big:hover #letters{
             height: 230px;
-            transform: translateY(-200px);
+            transform: translateY(-140px);
             transition:  1s ease-in-out;
             z-index: 99;
             background: #fff;
@@ -85,17 +95,18 @@
         #big:hover #picture{
             height: 279px;
             transform: scale(1.2,1.2);
+            transition: transform 1s ease-in-out;
             z-index: 97;
         }
         #big:hover{
-            box-shadow: 0px 0px 10px #ccc ;
+            box-shadow: 0px 0px 5px #888;
         }
     </style>
 </head>
 <body>
     <div id="big">
         <div id="circle">15<br/>五月</div>
-        <img id="picture" width="500" src="images/p1.jpg" alt="破冰行动宣传海报"/>
+        <img id="picture" width="450" src="images/p1.jpg" alt="破冰行动宣传海报"/>
         <div id="cover"></div>
         <div id="letters">
             <div id="square">照片</div>
@@ -105,11 +116,10 @@
                 广东省公安厅、北京欢乐源泉影视传媒有限公司、北京京默影视传媒文化有限公司联合摄制 。
                 该剧以李飞父子的缉毒行动为双线索，讲述了两代缉毒警察不畏牺牲，拼死撕开当地毒贩织起
                 的错综复杂的地下毒网，冲破重重迷局，为“雷霆扫毒”专项行动奉献热血与生命的故事。
-                该剧取材2013年广东雷霆扫毒真实案件，由真实事件改编，被称为是“缉毒版的《人民的名义》”
+                该剧取材2013年广东雷霆扫毒真实案件，由真实事件改编，被称为是“缉毒版的《人民的名义》”。
             </p>
-            <div id="white"></div>
         </div>
-        <p id="span">
+        <p id="p">
             <span>10分钟前</span>
             <span>123评论</span>
         </p>
